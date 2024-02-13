@@ -44,11 +44,11 @@ http.onload = function (resp) {
 let ul = document.querySelector(".myul")
 
 function usersFirstName(data) {
-    data.data.forEach( (elm, index) => {
+    data.data.forEach( (elm, i) => {
         let li = document.createElement("li");
 
 
-        li.textContent = `${data.data[index].first_name} ${data.data[index].last_name}` 
+        li.textContent = `${data.data[i].first_name} ${data.data[i].last_name}` 
 
 
 
