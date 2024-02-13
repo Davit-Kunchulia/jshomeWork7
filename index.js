@@ -16,8 +16,9 @@ function renderNameColor(data) {
     data.data.forEach(name => {
         let h2 = document.createElement("h2")
 
-        h2.textContent = `${name.name} - ${name.color}` ;
+        h2.textContent = `${name.name} : ${name.color}` ;
 
+        
     
         div.appendChild(h2)
 
@@ -46,7 +47,13 @@ function usersFirstName(data) {
     data.data.forEach( (elm, index) => {
         let li = document.createElement("li");
 
-        li.textContent = `${data.data[index].first_name} - ${data.data[index].last_name}` 
+        let img = document.createElement("img")
+
+        img.src = `${data.data[index].avatar}`
+
+        li.textContent = `${data.data[index].first_name} ${data.data[index].last_name}` 
+
+
 
         ul.appendChild(li);
     });
