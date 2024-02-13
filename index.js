@@ -47,9 +47,6 @@ function usersFirstName(data) {
     data.data.forEach( (elm, index) => {
         let li = document.createElement("li");
 
-        let img = document.createElement("img")
-
-        img.src = `${data.data[index].avatar}`
 
         li.textContent = `${data.data[index].first_name} ${data.data[index].last_name}` 
 
