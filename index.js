@@ -1,28 +1,26 @@
 // 1
 fetch("https://reqres.in/api/unknown")
-.then((response) => {
-// console.log(data);
-return response.json()
-})
-.then((data) => {
-    // console.log(data);
-    renderNameColor(data)
-})
+
+    .then((response) => {
+        return response.json()
+    })
+    .then((data) => {
+        renderNameColor(data)
+    })
 
 
 
 let div = document.querySelector(".mydiv")
 
-function renderNameColor (data){
-    data.forEach(name => {
+function renderNameColor(data) {
+    data.data.forEach(name => {
         let h2 = document.createElement("h2")
-        let colorDiv = document.querySelector("div")
 
-        h2.textContent = name.name
-        colorDiv.style.backgroundColor = name.color
+        h2.textContent = `${name.name} - ${name.color}` ;
 
+    
         div.appendChild(h2)
-        div.appendChild(colorDiv)
+
     });
 }
 
@@ -36,19 +34,20 @@ http.open("get", "https://reqres.in/api/users?page=2")
 
 http.send()
 
-http.onload = function(resp){
-let data = JSON.parse(resp.target.response)
+http.onload = function (resp) {
+    let data = JSON.parse(resp.target.response)
 
-usersFirstName(data)
+    usersFirstName(data)
 }
 
 let ul = document.querySelector(".myul")
 
 function usersFirstName(data) {
-    for(let i = 0; i < data.length; i++){
-        let li = document.createElement("li")
-        li.textContent = data[i].email
+    data.data.forEach( (elm, index) => {
+        let li = document.createElement("li");
 
-        ul.appendChild(li)
-    }
+        li.textContent = `${data.data[index].first_name} - ${data.data[index].last_name}` 
+
+        ul.appendChild(li);
+    });
 }
